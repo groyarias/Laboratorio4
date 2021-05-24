@@ -1,9 +1,8 @@
-package com.example.lab04
+package com.example.lab04.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -12,8 +11,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.example.lab04.R
 import com.example.lab04.databinding.ActivityMainBinding
-import com.example.lab04.ui.SecondActivity
 
 class MainActivity : AppCompatActivity() {
 

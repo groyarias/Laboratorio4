@@ -1,4 +1,4 @@
-package com.example.lab04.ui
+package com.example.lab04.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
