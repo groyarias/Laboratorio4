@@ -1,8 +1,13 @@
 package com.example.lab04.activities
 
+import android.app.Activity
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -37,6 +42,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home, R.id.nav_gallery
             ), drawerLayout
         )
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
@@ -53,6 +59,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        navView.menu.findItem(R.id.nav_logout).setCheckable(true)
+        navView.menu.findItem(R.id.nav_logout).setOnMenuItemClickListener { item ->
+            when(item.itemId){
+                R.id.nav_logout -> {
+                    logout(this)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -64,5 +80,29 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    fun logout(activity: Activity) {
+        //Initialize alert dialog
+        var builder = AlertDialog.Builder(activity)
+        //Set title
+        builder.setTitle("Cerrar Sesión")
+        //Set message
+        builder.setMessage("Está seguro que desea cerrar sesión?")
+        //Positive yes button
+        builder.setPositiveButton("Aceptar", DialogInterface.OnClickListener { dialog, which ->
+
+            var intent = Intent(activity, LoginActivity::class.java)
+            startActivity(intent)
+            //Finish activity
+            activity.finishAffinity()
+        })
+        //Negative no button
+        builder.setNegativeButton("Cancelar", DialogInterface.OnClickListener { dialog, which ->
+            //Dismiss dialog
+            dialog.dismiss()
+        })
+        //Show dialog
+        builder.show()
     }
 }

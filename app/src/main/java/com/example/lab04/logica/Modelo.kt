@@ -17,9 +17,9 @@ object Modelo{
 
     init {
         //Usuarios
-        agregarUsuario(Usuario("admin","admin","Administrador","NA","NA"))
-        agregarUsuario(Usuario("jorge","admin","Jorge","Canales","Espinoza"))
-        agregarUsuario(Usuario("roy","admin","Roy","Arias","Sandoval"))
+        agregarUsuario(Usuario("admin","Administrador","NA","NA","admin"))
+        agregarUsuario(Usuario("jorge","Jorge","Canales","Espinoza","admin"))
+        agregarUsuario(Usuario("roy","Roy","Arias","Sandoval","admin"))
 
     }
 
@@ -53,9 +53,12 @@ object Modelo{
         return false
     }
 
-    fun modificarContraseniaUsuario(idUsuario: String, nuevaContrasenia:String, confirmacion:String):Boolean{
+    fun modificarContraseniaUsuario(idUsuario: String, contrasenia:String ,nuevaContrasenia:String, confirmacion:String):Boolean{
         usuarios.forEach { it ->
             if(it.idUsuario.equals(idUsuario)){
+                if(it.contrasenia != contrasenia){
+                   return false
+                }
                 if (nuevaContrasenia.equals(confirmacion)){
                     it.contrasenia = nuevaContrasenia
                     return true
