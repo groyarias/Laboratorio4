@@ -18,11 +18,14 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lab04.R
 import com.example.lab04.databinding.ActivityMainBinding
+import com.example.lab04.logica.Usuario
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
+    private var usuarioLogeado : Usuario? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +46,11 @@ class MainActivity : AppCompatActivity() {
             ), drawerLayout
         )
 
+        //Aquí se obtiene el objeto del usuario logueado
+        var intent = intent
+        usuarioLogeado = intent.getSerializableExtra("loged_user")  as Usuario
+
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
@@ -52,6 +60,42 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_second_activity -> {
                     drawerLayout.close()
                     val intent = Intent(this, SecondActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
+
+
+        navView.menu.findItem(R.id.nav_listado_vuelos_activity).setCheckable(true)
+        navView.menu.findItem(R.id.nav_listado_vuelos_activity).setOnMenuItemClickListener { item ->
+            when(item.itemId){
+                R.id.nav_listado_vuelos_activity -> {
+                    drawerLayout.close()
+                    val intent = Intent(this, ListVuelosActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
+
+        navView.menu.findItem(R.id.nav_listado_compras_activity).setCheckable(true)
+        navView.menu.findItem(R.id.nav_listado_compras_activity).setOnMenuItemClickListener { item ->
+            when(item.itemId){
+                R.id.nav_listado_compras_activity -> {
+                    drawerLayout.close()
+
+                    /**
+                    * var intent:Intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("loged_user",usuarioIntent)
+                    startActivity(intent)
+                    * */
+
+                    val intent = Intent(this, ListComprasActivity::class.java)
+                    intent.putExtra(ListComprasActivity.COMPRAS_USUARIO, usuarioLogeado!!.obtenerVuelosComprados())
+                    intent.putExtra(ListComprasActivity.USUARIO_LOGUEADO, usuarioLogeado)
                     startActivity(intent)
                     true
                 }
@@ -105,4 +149,5 @@ class MainActivity : AppCompatActivity() {
         //Show dialog
         builder.show()
     }
+
 }

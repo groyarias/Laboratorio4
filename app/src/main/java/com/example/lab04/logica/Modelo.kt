@@ -14,12 +14,21 @@ package com.example.lab04.logica
     }*/
 object Modelo{
     private var usuarios:ArrayList<Usuario> = ArrayList<Usuario>()
+    private var vuelos:ArrayList<Vuelo> = ArrayList<Vuelo>()
 
     init {
         //Usuarios
         agregarUsuario(Usuario("admin","Administrador","NA","NA","admin"))
         agregarUsuario(Usuario("jorge","Jorge","Canales","Espinoza","admin"))
         agregarUsuario(Usuario("roy","Roy","Arias","Sandoval","admin"))
+
+        agregarVuelo(Vuelo("v1","Costa Rica,San Jose","Colombia,Cali","05/06/2021","10/06/2021"))
+        agregarVuelo(Vuelo("v2","Costa Rica,San Jose","USA,Chicago","07/06/2021","21/06/2021"))
+        agregarVuelo(Vuelo("v3","Costa Rica,San Jose","Perú,Lima","04/06/2021","17/06/2021"))
+
+        var r_user = usuarios[2]
+        r_user.agregarVuelo(vuelos[0])
+        r_user.agregarVuelo(vuelos[2])
 
     }
 
@@ -68,6 +77,22 @@ object Modelo{
         return false
     }
 
+    fun obtenerVuelos():ArrayList<Vuelo>{
+        return vuelos
+    }
+
+    fun agregarVuelo(vuelo: Vuelo){
+        vuelos.add(vuelo)
+    }
+
+    fun obtenerVuelo(idVuelo:String):Vuelo?{
+        vuelos.forEach { it ->
+            if(it.identificador.equals(idVuelo))
+                return it
+        }
+        return null
+    }
+
 }
 
 /*fun main(){
@@ -75,4 +100,6 @@ object Modelo{
     println(modelo)
     var modelo1 = Modelo
     println(modelo1)
+
+    println(modelo.obtenerVuelos().toString())
 }*/

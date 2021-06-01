@@ -37,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
             var intent:Intent = Intent(this,ContraseniaActivity::class.java)
             startActivity(intent)
         }
+
     }
 
     fun login(){
@@ -49,6 +50,7 @@ class LoginActivity : AppCompatActivity() {
                 if(usuarioIntent.contrasenia.equals(txtContrasenia)){
                     //Intent a actividad
                     var intent:Intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("loged_user",usuarioIntent)
                     startActivity(intent)
                     finish()
                 }else{
