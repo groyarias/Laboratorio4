@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_app"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".activities.LoginActivity">
@@ -21,9 +22,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/background_content"
             android:orientation="vertical"
-            android:padding="16dp"
-            >
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/tv_title"
@@ -31,10 +32,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Login"
-                android:textStyle="bold"
-                android:textSize="30sp"
                 android:textColor="@color/colorInputText"
-                />
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -56,56 +56,56 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_contrasenia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 app:passwordToggleDrawable="@drawable/ic_selector"
-                app:passwordToggleEnabled="true"
-                >
+                app:passwordToggleEnabled="true">
+
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/et_contrasenia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:imeOptions="actionGo"
                     android:hint="Contraseña"
+                    android:imeOptions="actionGo"
                     android:inputType="textPassword"
                     android:textColor="@color/colorInputText"
-                    android:textColorHint="@color/colorInputHint"
-                    />
+                    android:textColorHint="@color/colorInputHint" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 android:id="@+id/tv_cambiar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"
                 android:layout_gravity="right"
-                android:text="Cambiar contraseña" />
+                android:layout_marginTop="10dp"
+                android:text="Cambiar contraseña"
+                android:textColor="@color/colorInputHint"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btn_ingresar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/rounded_button"
+                android:background="@drawable/background_app"
                 android:text="Ingresar"
                 android:textColor="@android:color/white"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
+
             <TextView
                 android:id="@+id/tv_registrar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"
                 android:layout_gravity="center"
-                android:text="Registrarse" />
+                android:layout_marginTop="10dp"
+                android:text="Registrarse"
+                android:textColor="@color/colorInputHint"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

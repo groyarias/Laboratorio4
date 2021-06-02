@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_app"
     tools:context=".activities.ContraseniaActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/background_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +25,11 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
 
             <EditText
                 android:id="@+id/et_usuario"
@@ -31,8 +37,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Usuario"
-                android:inputType="text"
-                android:imeOptions="actionNext"/>
+                android:imeOptions="actionNext"
+                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -40,19 +46,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             app:passwordToggleDrawable="@drawable/ic_selector"
-            app:passwordToggleEnabled="true"
-            >
+            app:passwordToggleEnabled="true">
+
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_contrasenia_actual"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionGo"
                 android:hint="Contraseña actual"
+                android:imeOptions="actionGo"
                 android:inputType="textPassword"
                 android:textColor="@color/colorInputText"
-                android:textColorHint="@color/colorInputHint"
-                />
+                android:textColorHint="@color/colorInputHint" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -60,19 +67,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             app:passwordToggleDrawable="@drawable/ic_selector"
-            app:passwordToggleEnabled="true"
-            >
+            app:passwordToggleEnabled="true">
+
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_nueva_contrasenia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionGo"
                 android:hint="Nueva contraseña"
+                android:imeOptions="actionGo"
                 android:inputType="textPassword"
                 android:textColor="@color/colorInputText"
-                android:textColorHint="@color/colorInputHint"
-                />
+                android:textColorHint="@color/colorInputHint" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -80,19 +88,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             app:passwordToggleDrawable="@drawable/ic_selector"
-            app:passwordToggleEnabled="true"
-            >
+            app:passwordToggleEnabled="true">
+
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_confirmacion_contrasenia"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionGo"
                 android:hint="Confirmar contraseña"
+                android:imeOptions="actionGo"
                 android:inputType="textPassword"
                 android:textColor="@color/colorInputText"
-                android:textColorHint="@color/colorInputHint"
-                />
+                android:textColorHint="@color/colorInputHint" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -101,9 +110,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
+            android:background="@drawable/background_app"
+            android:backgroundTint="#99C8ED"
             android:src="@drawable/ic_edit_user"
             android:tint="@android:color/background_light"
-            app:backgroundTint="@color/colorPrimary" />
+            app:backgroundTint="@color/white" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
