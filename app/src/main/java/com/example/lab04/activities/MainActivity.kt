@@ -18,6 +18,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lab04.R
 import com.example.lab04.databinding.ActivityMainBinding
+import com.example.lab04.logica.Modelo
 import com.example.lab04.logica.Usuario
 
 class MainActivity : AppCompatActivity() {
@@ -87,14 +88,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_listado_compras_activity -> {
                     drawerLayout.close()
 
-                    /**
-                    * var intent:Intent = Intent(this, MainActivity::class.java)
-                    intent.putExtra("loged_user",usuarioIntent)
-                    startActivity(intent)
-                    * */
-
                     val intent = Intent(this, ListComprasActivity::class.java)
-                    intent.putExtra(ListComprasActivity.COMPRAS_USUARIO, usuarioLogeado!!.obtenerVuelosComprados())
+                    intent.putExtra(ListComprasActivity.COMPRAS_USUARIO, Modelo.obtenerUsuario(usuarioLogeado!!.idUsuario)?.obtenerVuelosComprados())
                     intent.putExtra(ListComprasActivity.USUARIO_LOGUEADO, usuarioLogeado)
                     startActivity(intent)
                     true

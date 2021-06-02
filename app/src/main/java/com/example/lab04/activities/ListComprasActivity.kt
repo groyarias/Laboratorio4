@@ -71,7 +71,10 @@ class ListComprasActivity : AppCompatActivity() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val adapter = rv_compras_list.adapter as VuelosAdaptador
 
-                adapter.removeAt(viewHolder.adapterPosition)
+                var position = viewHolder.adapterPosition
+                var vuelo = listaVuelos[position]
+                Modelo.eliminarVueloAUsuario(usuarioLogueado!!,vuelo)
+                adapter.removeAt(position)
 
             }
         }

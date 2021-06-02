@@ -85,6 +85,12 @@ object Modelo{
         vuelos.add(vuelo)
     }
 
+    fun eliminarVueloAUsuario(usuario: Usuario, vuelo: Vuelo){
+        if(vuelos.contains(vuelo)){
+            usuarios.find { it.idUsuario.equals(usuario.idUsuario) }?.eliminarVuelo(vuelo.identificador)
+        }
+    }
+
     fun obtenerVuelo(idVuelo:String):Vuelo?{
         vuelos.forEach { it ->
             if(it.identificador.equals(idVuelo))

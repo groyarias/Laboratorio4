@@ -92,7 +92,6 @@ open class VuelosAdaptador (
     }
 
     fun removeAt(position: Int) {
-        var identificador = listaVuelos[position].identificador
         listaVuelos.removeAt(position)
         notifyItemRemoved(position)
     }
