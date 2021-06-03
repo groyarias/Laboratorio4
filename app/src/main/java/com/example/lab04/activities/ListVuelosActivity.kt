@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lab04.R
 import com.example.lab04.adaptadores.VuelosAdaptador
 import com.example.lab04.logica.Modelo
+import com.example.lab04.logica.Usuario
 import com.example.lab04.logica.Vuelo
 import com.example.swiperecyclerview.utils.SwipeToBuyCallback
 import kotlinx.android.synthetic.main.activity_list_vuelos.*
@@ -26,6 +27,7 @@ class ListVuelosActivity : AppCompatActivity() {
     private var listaVuelosMostrar:ArrayList<Vuelo> = ArrayList()
 
     private var vuelosAdaptador:VuelosAdaptador? = null
+    private var usuarioLogeado : Usuario? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +47,9 @@ class ListVuelosActivity : AppCompatActivity() {
             rv_vuelos_list.visibility = View.GONE
             tv_sin_vuelos_disponibles.visibility = View.VISIBLE
         }
+
+        var intent = intent
+        usuarioLogeado = intent.getSerializableExtra(USUARIO_LOGUEADO)  as Usuario
     }
 
 
@@ -69,7 +74,8 @@ class ListVuelosActivity : AppCompatActivity() {
                 adapter.notifyBuyItem(
                     this@ListVuelosActivity,
                     viewHolder.adapterPosition,
-                    BUY_FLIGHT_ACTIVITY_REQUEST_CODE
+                    BUY_FLIGHT_ACTIVITY_REQUEST_CODE,
+                    usuarioLogeado!!
                 )
             }
         }
@@ -131,7 +137,8 @@ class ListVuelosActivity : AppCompatActivity() {
 
     companion object{
         private const val BUY_FLIGHT_ACTIVITY_REQUEST_CODE = 1
-        internal const val COMPRAR_VUELO = "comprar_vuelo"
+        const val USUARIO_LOGUEADO = "usuario_logueado"
+
     }
 
 }

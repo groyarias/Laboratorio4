@@ -8,9 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lab04.R
-import com.example.lab04.activities.ComprarVueloActivity
 import com.example.lab04.activities.ListVuelosActivity
+import com.example.lab04.activities.ReservarAsientoActivity
 import com.example.lab04.logica.Modelo
+import com.example.lab04.logica.Usuario
 import com.example.lab04.logica.Vuelo
 import kotlinx.android.synthetic.main.item_vuelo.view.*
 
@@ -80,14 +81,20 @@ open class VuelosAdaptador (
     /**
      * Una función para comprar el vuelo y pasar el detalle existente a través de un intent
      */
-    fun notifyBuyItem(activity: Activity, position: Int, requestCode: Int) {
-        val intent = Intent(context, ComprarVueloActivity::class.java)
-        intent.putExtra(ListVuelosActivity.COMPRAR_VUELO, listaVuelos[position])
-        activity.startActivityForResult(
+    fun notifyBuyItem(activity: Activity, position: Int, requestCode: Int, usuario: Usuario) {
+        val intent = Intent(context, ReservarAsientoActivity::class.java)
+        var vuelo:Vuelo = listaVuelos[position]
+
+        intent.putExtra(ReservarAsientoActivity.COMPRAR_VUELO, Modelo.obtenerVuelo(vuelo.identificador))
+        intent.putExtra(ReservarAsientoActivity.DETALLES_AVION, Modelo.obtenerAvion(vuelo.idAvion!!))
+        intent.putExtra(ReservarAsientoActivity.USUARIO_LOGUEADO, usuario)
+
+        /*activity.startActivityForResult(
             intent,
             requestCode
-        )
+        )*/
 
+        activity.startActivity(intent)
         notifyItemChanged(position)
     }
 
@@ -95,9 +102,6 @@ open class VuelosAdaptador (
         listaVuelos.removeAt(position)
         notifyItemRemoved(position)
     }
-
-
-
     /**
     * Un ViewHolder describe un item view y metadata sobre su lugar en el RecyclerView
     * */

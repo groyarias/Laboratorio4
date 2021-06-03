@@ -50,6 +50,7 @@ class LoginActivity : AppCompatActivity() {
                 if(usuarioIntent.contrasenia.equals(txtContrasenia)){
                     //Intent a actividad
                     var intent:Intent = Intent(this, MainActivity::class.java)
+                    Modelo.establecerUsuarioLogueado(usuarioIntent)
                     intent.putExtra("loged_user",usuarioIntent)
                     startActivity(intent)
                     finish()

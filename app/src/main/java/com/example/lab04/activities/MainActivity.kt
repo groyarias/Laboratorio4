@@ -48,8 +48,9 @@ class MainActivity : AppCompatActivity() {
         )
 
         //Aquí se obtiene el objeto del usuario logueado
-        var intent = intent
-        usuarioLogeado = intent.getSerializableExtra("loged_user")  as Usuario
+        //var intent = intent
+        //usuarioLogeado = intent.getSerializableExtra("loged_user")  as Usuario
+        usuarioLogeado = Modelo.obtenerUsuarioLogueado()
 
 
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -75,6 +76,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_listado_vuelos_activity -> {
                     drawerLayout.close()
                     val intent = Intent(this, ListVuelosActivity::class.java)
+                    intent.putExtra(ListVuelosActivity.USUARIO_LOGUEADO, usuarioLogeado)
                     startActivity(intent)
                     true
                 }

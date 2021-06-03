@@ -9,4 +9,7 @@ data class Vuelo(
     var destino:String,
     var salida:String,
     var regreso: String
-):Serializable
+):Serializable{
+    var idAvion:String? = null
+    var boolArrayAsientos:Array<BooleanArray>? = null
+}

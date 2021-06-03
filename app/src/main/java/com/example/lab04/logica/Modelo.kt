@@ -15,6 +15,9 @@ package com.example.lab04.logica
 object Modelo{
     private var usuarios:ArrayList<Usuario> = ArrayList<Usuario>()
     private var vuelos:ArrayList<Vuelo> = ArrayList<Vuelo>()
+    private var aviones:ArrayList<Avion> = ArrayList<Avion>()
+
+    private var usuariologueado:Usuario? = null
 
     init {
         //Usuarios
@@ -26,10 +29,35 @@ object Modelo{
         agregarVuelo(Vuelo("v2","Costa Rica,San Jose","USA,Chicago","07/06/2021","21/06/2021"))
         agregarVuelo(Vuelo("v3","Costa Rica,San Jose","Perú,Lima","04/06/2021","17/06/2021"))
 
+        agregarAvion(Avion("a1","Boeing","747",10,5))
+        agregarAvion(Avion("a2","Airbus","A340",8,3))
+
+        vuelos[0].idAvion = aviones[0].identificador
+        vuelos[0].boolArrayAsientos = crearMatrizBooleanaAsientos(aviones[0].filas,aviones[0].columnas)
+        //Reservacion de asientos
+        vuelos[0].boolArrayAsientos!![0][0] = true
+        vuelos[0].boolArrayAsientos!![3][3] = true
+
+
+        vuelos[1].idAvion = aviones[1].identificador
+        vuelos[1].boolArrayAsientos = crearMatrizBooleanaAsientos(aviones[1].filas,aviones[1].columnas)
+
+        vuelos[2].idAvion = aviones[1].identificador
+        vuelos[2].boolArrayAsientos = crearMatrizBooleanaAsientos(aviones[1].filas,aviones[1].columnas)
+
+
         var r_user = usuarios[2]
         r_user.agregarVuelo(vuelos[0])
         r_user.agregarVuelo(vuelos[2])
 
+    }
+
+    fun establecerUsuarioLogueado(usuario: Usuario){
+        usuariologueado = usuario
+    }
+
+    fun obtenerUsuarioLogueado():Usuario{
+        return usuariologueado!!
     }
 
 
@@ -97,6 +125,27 @@ object Modelo{
                 return it
         }
         return null
+    }
+
+    fun agregarAvion(avion: Avion){
+        aviones.add(avion)
+    }
+
+    fun obtenerAviones():ArrayList<Avion>{
+        return aviones
+    }
+
+    fun obtenerAvion(idAvion:String):Avion?{
+        aviones.forEach { it ->
+            if(it.identificador.equals(idAvion))
+                return it
+        }
+        return null
+    }
+
+    fun crearMatrizBooleanaAsientos(filas:Int, columnas:Int): Array<BooleanArray> {
+        val matrizBool= Array(filas){BooleanArray(columnas)}
+        return matrizBool
     }
 
 }
