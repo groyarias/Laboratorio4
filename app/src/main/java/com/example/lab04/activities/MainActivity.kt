@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery
+                R.id.nav_home
             ), drawerLayout
         )
 
@@ -56,12 +56,13 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        navView.menu.findItem(R.id.nav_second_activity).setCheckable(true)
-        navView.menu.findItem(R.id.nav_second_activity).setOnMenuItemClickListener { item ->
+        navView.menu.findItem(R.id.nav_perfil_usuario).setCheckable(true)
+        navView.menu.findItem(R.id.nav_perfil_usuario).setOnMenuItemClickListener { item ->
             when(item.itemId){
-                R.id.nav_second_activity -> {
+                R.id.nav_perfil_usuario -> {
                     drawerLayout.close()
                     val intent = Intent(this, SecondActivity::class.java)
+                    intent.putExtra(SecondActivity.USUARIO_LOGUEADO, Modelo.obtenerUsuarioLogueado())
                     startActivity(intent)
                     true
                 }

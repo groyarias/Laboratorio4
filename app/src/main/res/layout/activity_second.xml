@@ -16,6 +16,7 @@
         android:layout_marginTop="80dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
+        android:padding="20dp"
         android:background="@drawable/background_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,14 +46,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
             <TextView
-                android:text="Email"
+                android:text="Identificación"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2" />
 
 
             <TextView
-                android:text="Example@hotmail.com"
+                android:id="@+id/tvIdPerfil"
+                android:text="101110111"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="2" />
@@ -70,6 +72,7 @@
 
 
             <TextView
+                android:id="@+id/tvNombrePerfil"
                 android:text="Example Name "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -92,6 +95,7 @@
 
 
             <TextView
+                android:id="@+id/tvApellidoPerfil"
                 android:text="Example Apellido "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -117,6 +121,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout"
         app:layout_constraintVertical_bias="0.875"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/ic_perfil"
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
